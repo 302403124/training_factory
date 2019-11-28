@@ -14,12 +14,26 @@ class BezoekerController extends AbstractController
      */
     public function homepageaction()
     {
-        $training = $this->getDoctrine()
+        $trainingen = $this->getDoctrine()
             ->getRepository(Training::class)
             ->findAll();
 
         return $this->render('homepage.html.twig',[
         'title' => 'Agenda',
+            'trainingen'=> $trainingen
 ]);
 }
+    /**
+     * @Route("/contact", name="contactpagina")
+     */
+    public function contactaction()
+    {
+        $training = $this->getDoctrine()
+            ->getRepository(Training::class)
+            ->findAll();
+
+        return $this->render('contact.html.twig', [
+            'title' => 'Agenda',
+        ]);
+    }
 }

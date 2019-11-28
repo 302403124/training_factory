@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="nl">
     <head>
-        <title>{% block title %}Welkom {% endblock %}</title>
+        <title>{% block title %}Training Factory{% endblock %}</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         {% block stylesheets %}
@@ -11,24 +11,53 @@
         {% endblock %}
     </head>
     <body>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <img src="/src/img/imagetop.png" width="100px" height="100px">
-        <a class="navbar-brand" href="#" style="margin-left: 1%">Homepagina</a>
+        <img src="{{ asset ('img/imagetop.png')}}" alt="Judo" width="100px" height="100px">
+        <a class="navbar-brand" href="/homepage" style="margin-left: 1%">Homepagina</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Contact <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/contact">Contact <span class="sr-only">(current)</span></a>
                 </li>
+            </ul>
         </div>
     </nav>
         {% block body %}{% endblock %}
+    <p style="text-align: center; font-size: 32px;">Kies een training om </p>
+
+    <div class="card-group">
+        <div class="card">
+            <img src="{{ asset ('img/Kickboks.jpg')}}" class="card-img-top" alt="..." height="75%">
+            <div class="card-body">
+                <h5 class="card-title">Kickboks</h5>
+                <p class="card-text">Heb jij zin om eens lekker te bewegen?<br>
+                Nou dat kan bij onze kickboks training het best. 90 minuten lang intensief trainen</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="{{ asset ('img/Stootzakken.jpg')}}" class="card-img-top" alt="..." height="75%">
+            <div class="card-body">
+                <h5 class="card-title">Stootszak</h5>
+                <p class="card-text">Wil jij je stootkracht en techniek verbeteren?<br>
+                    Nou dat kan bij onze stootzak training het best. 35 minuten lang intensief trainen</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="{{ asset ('img/Worstelen.jpg')}}" class="card-img-top" alt="..." height="75%">
+            <div class="card-body">
+                <h5 class="card-title">Worstelen</h5>
+                <p class="card-text">Heb jij zin om te leren worstelen en je grip te verbeteren?<br>
+                    Nou dat kan bij onze worstel training het best. 45 minuten lang intensief trainen</p>
+            </div>
+        </div>
+    </div>
         <footer class="footer">
-            <div class="container text-center">
-                <span class="text-muted">Gemaakt door Nouvel el Masoudi</span>
+            <div class="container text-center" style="margin-top: 10%;">
+                <span class="text-muted">Copyright © 2019 Training Factory. All rights reserved.</span>
+                <span class="text-muted">Created by <b>Nouvel el Masoudi</b></span>
             </div>
         </footer>
         {% block javascripts %}
