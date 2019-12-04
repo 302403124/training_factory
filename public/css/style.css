@@ -1,0 +1,25 @@
+.card-group .card{
+    flex: none;
+}
+.card-img-top{
+    width: 365px !important;
+}
+footer{
+    margin-left: 20%;
+}
+body{
+    background-image: url("img/background.jpg");
+}
+.text-muted{
+    color: white !important;
+}
+h4, p{
+    color: white;
+    background-color: rgba(21, 22, 22, 0.76);
+}
+p{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    margin-left: 15%;
+}

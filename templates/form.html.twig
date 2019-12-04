@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block body%}
+    <div class="container"style="width: 100%;">
+        <h1>Vul de onderstaande velden in</h1>
+        {{ form(form) }}
+        <div class="mapouter">
+            <div class="gmap_canvas">
+                <iframe width="400" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=tinwerf%2016&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+            </div>
+            <style>.mapouter{float:left;margin: 6% 0 0 5%;text-align:right;height:400px;width:400px;}.gmap_canvas {overflow:hidden;background:none!important;height:400px;width:400px;}</style>
+        </div>
+    </div>
+    <style>
+        body{
+            background-image: url("img/background.jpg");
+        }
+        form{
+            float: left;
+            width: 50%;
+            color: white;
+            font-size: 21px;
+            margin-top: 5%;
+            align-content: center;
+        }
+
+{%  endblock %}
