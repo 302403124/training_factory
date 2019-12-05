@@ -41,12 +41,13 @@ use Symfony\Component\HttpFoundation\Response;
          */
         public function trainingsaanbodaction()
         {
-            $training = $this->getDoctrine()
+            $trainingen = $this->getDoctrine()
                 ->getRepository(Training::class)
                 ->findAll();
 
             return $this->render('trainingsaanbod.html.twig', [
                 'title' => 'Agenda',
+                'trainingen'=> $trainingen
             ]);
         }
         /**
