@@ -2,10 +2,11 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Core\User\User;
+
 
 class UserFixtures extends Fixture
 {
@@ -22,7 +23,7 @@ class UserFixtures extends Fixture
         $user->setRoles(['ROLE_ADMIN']);
         $user->setPassword($this->passwordEncoder->encodePassword(
             $user,
-            'WelcomeNewMember'
+            'Nouvel302403124'
         ));
         $manager->persist($user);
         $user = new User();
@@ -30,7 +31,7 @@ class UserFixtures extends Fixture
         $user->getRoles(['ROLE_USER']);
         $user->setPassword($this->passwordEncoder->encodePassword(
             $user,
-            'WelcomeNewMember'
+            'Nouvel302403124'
         ));
         $manager->persist($user);
         $manager->flush();

@@ -20,6 +20,7 @@ use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticato
 use Symfony\Component\Security\Guard\PasswordAuthenticatedInterface;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
+
 class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements PasswordAuthenticatedInterface
 {
     use TargetPathTrait;
@@ -62,14 +63,14 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     {
         $token = new CsrfToken('authenticate', $credentials['csrf_token']);
         if (!$this->csrfTokenManager->isTokenValid($token)) {
-            throw new InvalidCsrfTokenException();
+//            throw new InvalidCsrfTokenException();
         }
 
         $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Email could not be found.');
+//            throw new CustomUserMessageAuthenticationException('Email could not be found.');
         }
 
         return $user;
@@ -90,16 +91,20 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
-            return new RedirectResponse($targetPath);
-        }
-
-        // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+//        $adminRights = in_array('ROLE_ADMIN', $token ->getUser()->getRoles());
+//        $userRights = in_array('ROLE_USER', $token ->getUser()->getRoles());
+//        if ($adminRights)
+//        {
+//            return new RedirectResponse($this->urlGenerator->generate('homepagina'));
+//        }
+//        elseif ($userRights)
+//        {
+            return new RedirectResponse($this->urlGenerator->generate('homepagina'));
+//        }
     }
-
     protected function getLoginUrl()
     {
         return $this->urlGenerator->generate('app_login');
     }
 }
+

@@ -5,11 +5,10 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\GebruikerRepository")
  */
-class User implements UserInterface
+class Gebruiker implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -26,7 +25,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="json")
      */
-    private $roles;
+    private $roles = [];
 
     /**
      * @var string The hashed password
@@ -61,13 +60,16 @@ class User implements UserInterface
         return (string) $this->email;
     }
 
-
     /**
      * @see UserInterface
      */
-    public function getRoles()
+    public function getRoles(): array
     {
-             return $this->roles;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 
     public function setRoles(array $roles): self

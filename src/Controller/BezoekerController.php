@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
     class BezoekerController extends AbstractController
     {
         /**
-         * @Route("/homepage", name="homepagina")
+         * @Route("/", name="homepagina")
          */
         public function homepageaction()
         {
@@ -63,4 +63,5 @@ use Symfony\Component\HttpFoundation\Response;
                 'title' => 'Agenda',
             ]);
         }
+
     }
