@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="card-group">
+    {% for training in trainingen  %}
+
+        <div class="card">
+            <img src="img/{{ training.naam }}.jpg" class="card-img-top" style="" alt="...">
+
+        <p1 class="text-center">
+
+            Training: {{ training.naam }}<br>
+            Beschrijving: {{ training.description }}<br>
+            Duur: {{ training.duration }} <br>
+            Prijs: {{ training.costs }}	 <br>
+        </p1>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+    <style>
+        p1{
+            font-size: 15px !important;
+            width: 300px;
+            color: white;
+
+            padding-left: 2%;
+            float: right;
+        }
+        .card{
+            background-color: rgba(21, 22, 22, 0.76);
+            flex: 1 0 0% !important;
+            float: left;
+        }
+        .card-group{
+            float: left;
+            box-sizing: content-box;
+            flex-flow: row wrap;
+        }
+        footer{
+            margin-right: 20%;
+            margin-top: 38%;
+        }
+    </style>
+{% endblock %}

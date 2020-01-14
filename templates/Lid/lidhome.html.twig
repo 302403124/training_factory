@@ -1,0 +1,28 @@
+{% extends 'Lid/lidbase.html.twig' %}
+
+{% block body %}
+    <div class="container" style="width: 100%;">
+        {% for training in trainingen  %}
+        <div class="card-group">
+            <div class="card">
+                <img src="img/{{ training.naam }}.jpg" class="card-img-top" alt="...">
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    <h1 style="margin-left: 15%; margin-top: 10%; ">
+        <b>Welkom bij Trainings Factory Den Haag</b><br>
+    </h1>
+    <p>
+        Den Haag Training Factory is een sportschool waar ondr proffecionele begeleiding<br>
+        in een veilige omgeving verschillende soorten martial arts-, indoor bootcamp,<br>
+        persenal- en smalle group trainingen worden aangeboden. Hier kan je je inschrijven<br>
+        op een les of uitschrijven op een les
+    </p>
+    <style>
+        footer{
+            margin-top: 20% !important;
+        }
+    </style>
+{% endblock %}

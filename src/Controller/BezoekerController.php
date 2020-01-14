@@ -3,11 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\Training;
+use App\Entity\User;
+use App\Form\Type\UserType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Form\FormTypeInterface;
 
-    class BezoekerController extends AbstractController
+class BezoekerController extends AbstractController
     {
         /**
          * @Route("/", name="homepagina")
@@ -18,23 +23,10 @@ use Symfony\Component\HttpFoundation\Response;
                 ->getRepository(Training::class)
                 ->findAll();
 
-            return $this->render('homepage.html.twig',[
+            return $this->render('bezoeker/homepage.html.twig',[
             'title' => 'Agenda',
                 'trainingen'=> $trainingen
         ]);
-        }
-        /**
-         * @Route("/contact", name="contactpagina")
-         */
-        public function contactaction()
-        {
-            $training = $this->getDoctrine()
-                ->getRepository(Training::class)
-                ->findAll();
-
-            return $this->render('contact.html.twig', [
-                'title' => 'Agenda',
-            ]);
         }
         /**
          * @Route("/trainingsaanbod", name="trainingsaanbodpagina")
@@ -45,7 +37,7 @@ use Symfony\Component\HttpFoundation\Response;
                 ->getRepository(Training::class)
                 ->findAll();
 
-            return $this->render('trainingsaanbod.html.twig', [
+            return $this->render('bezoeker/trainingsaanbod.html.twig', [
                 'title' => 'Agenda',
                 'trainingen'=> $trainingen
             ]);
@@ -59,9 +51,29 @@ use Symfony\Component\HttpFoundation\Response;
                 ->getRepository(Training::class)
                 ->findAll();
 
-            return $this->render('gedragsregels.html.twig', [
+            return $this->render('bezoeker/gedragsregels.html.twig', [
                 'title' => 'Agenda',
             ]);
         }
 
+        /**
+        * @Route("/register", name="app_register")
+        */
+        public function registerNewMemberAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $newMember = new User();
+        $form= $this->createForm(UserType::class, $newMember);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            $newMember=$form->getData();
+            $newMember->setPassword($passwordEncoder->encodePassword($newMember,$form->get('Wachtwoord')->getData()));
+            $newMember->setRoles(['ROLE_USER']);
+
+            $entityManager=$this->getDoctrine()->getManager();
+            $entityManager->persist($newMember);
+            $entityManager->flush();
+            return $this->redirectToRoute('homepagina');
+        }
+        return $this->render('security/register.html.twig', ['form'=>$form->createView(),]);
+    }
     }

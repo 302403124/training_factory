@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registreer{% endblock %}
+
+{% block body %}
+    <form method="post" style="width: 20%; justify-content: center; margin: 10% 0 0 40%;">
+        {{ form_start(form) }}
+
+        {{ form_row(form.email) }}
+        {{ form_row(form.Wachtwoord) }}
+
+        {{ form_end(form) }}
+    </form>
+    <style>
+        input{
+            width: 40%;
+            height: 35px;
+            border-radius: 05px;
+            margin-bottom: 20px;
+            background-color: rgba(21, 22, 22, 0.76);
+            color: white;
+            border-color: #C9C9C9;
+        }
+        form{
+            background-color: transparent!important;
+        }
+        footer{
+            margin-top: 25% !important;
+        }
+    </style>
+{% endblock %}

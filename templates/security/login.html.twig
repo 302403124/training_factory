@@ -1,17 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Log in{% endblock %}
 
 {% block body %}
 <form method="post" style="width: 20%; justify-content: center; margin: 10% 0 0 40%;">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
     {% endif %}
     <h1 class="h3 mb-3 font-weight-normal">Login</h1>
     <label for="inputEmail">Email</label>
@@ -25,9 +19,19 @@
         Sign in
     </button>
 </form>
+
     <style>
         footer{
-            margin-top: 25% !important;
+            margin-top: 14% !important;
+            margin-right: 20%;
+        }
+        .btn-lg{
+            opacity: 80%;
+        }
+        .btn-primary{
+            background-color: #313131;
+            border-color: #313131;
+            margin: 2% 0 0 35%;
         }
     </style>
 {% endblock %}

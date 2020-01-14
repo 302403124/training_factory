@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-transparent bg-transparent">
+    <img src="{{ asset ('img/logo.png')}}" alt="Judo"  height="100px">
+    <a class="navbar-brand" href="/lidhome" style="margin-left: 1%;color: white !important;">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="*" style="color: white !important;">Lessen</a>
+            </li>
+{#            <li class="nav-item active">#}
+{#                <a class="nav-link" href="/gedragsregels" style="color: white !important;">Agenda</a>#}
+{#            </li>#}
+{#            <li class="nav-item active">#}
+{#                <a class="nav-link" href="/form" style=  "color: white !important;">Contact</a>#}
+{#            </li>#}
+            <li class="nav-item active">
+                <a class="nav-link"href="{{ path('app_logout') }}"style="color: white !important; margin-left: 800px;">Log uit</a>
+            </li>
+            <li class="nav-item disabled">
+                <a class="nav-link" style="color: white !important;">U bent ingelogd als {{ app.user.username }}</a>
+            </li>
+        </ul>
+    </div>
+</nav>

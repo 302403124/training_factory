@@ -23,7 +23,7 @@ class UserFixtures extends Fixture
         $user->setRoles(['ROLE_ADMIN']);
         $user->setPassword($this->passwordEncoder->encodePassword(
             $user,
-            'Nouvel302403124'
+            'abc123'
         ));
         $manager->persist($user);
         $user = new User();
@@ -31,7 +31,7 @@ class UserFixtures extends Fixture
         $user->getRoles(['ROLE_USER']);
         $user->setPassword($this->passwordEncoder->encodePassword(
             $user,
-            'Nouvel302403124'
+            'abc123'
         ));
         $manager->persist($user);
         $manager->flush();
