@@ -81,7 +81,7 @@ class DirecteurController extends AbstractController
             'title' => 'Agenda',
             'trainingen'=> $trainingen
         ]);
-    } 
+    }
     /**
      * @Route("/ledenlijst", name="ledenpagina")
      */
@@ -114,35 +114,46 @@ class DirecteurController extends AbstractController
      */
     public function userEditaction(Request $request, $item, UserPasswordEncoderInterface $passwordEncoder)
     {
-        $entityManager = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $repository = $this->getDoctrine()->getRepository(User::class);
+        $lid = $repository->find($item);
 
-        $user = $entityManager->getRepository(User::class)->find($item);
-        $savePassword = $user->getPassword();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->find($item);
 
-        if ($form->isSubmitted() && $form->isValid())
-        {
-            $user = $form->getData();
-            $password=$form->get('Wachtwoord')->getData();
-            if (!$password)
-            {
-                $user->setPassword($savePassword);
-            }
-            else{
-                $user->setPassword($passwordEncoder->encodePassword($user, $password));
-            }
+        $em->persist($user);]
+        $em->flush();
 
-            $entityManager->persist($user);
-            $entityManager->flush();
-            return $this->redirectToRoute('ledenpagina');
-        }
-        return $this->render('Admin/adminhome.html.twig');
-
-
-
-
-
-
+        return $this->render('', [
+            'title' => '|Lid gegevens',
+            'lid' => $lid,
+            'user' => $user,
+        ]);
     }
+//    {
+//        $entityManager = $this->getDoctrine()->getManager();
+//
+//        $user = $entityManager->getRepository(User::class)->find($item);
+//        $savePassword = $user->getPassword();
+//        $form = $this->createForm(UserType::class, $user);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid())
+//        {
+//            $user = $form->getData();
+//            $password=$form->get('Wachtwoord')->getData();
+//            if (!$password)
+//            {
+//                $user->setPassword($savePassword);
+//            }
+//            else{
+//                $user->setPassword($passwordEncoder->encodePassword($user, $password));
+//            }
+//
+//            $entityManager->persist($user);
+//            $entityManager->flush();
+//            return $this->redirectToRoute('ledenpagina');
+//        }
+//        return $this->render('Admin/adminhome.html.twig');
+//    }
 }

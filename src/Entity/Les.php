@@ -5,7 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="LesRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\LesRepository")
  */
 class Les
 {
@@ -41,6 +41,11 @@ class Les
      * @ORM\JoinColumn(nullable=false)
      */
     private $training;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     */
+    private $instructeur;
 
     public function getId(): ?int
     {
@@ -103,6 +108,18 @@ class Les
     public function setTraining(?Training $training): self
     {
         $this->training = $training;
+
+        return $this;
+    }
+
+    public function getInstructeur(): ?User
+    {
+        return $this->instructeur;
+    }
+
+    public function setInstructeur(?User $instructeur): self
+    {
+        $this->instructeur = $instructeur;
 
         return $this;
     }
