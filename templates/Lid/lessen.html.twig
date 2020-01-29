@@ -1,6 +1,48 @@
 {% extends 'Lid/lidbase.html.twig' %}
 {% block body%}
-    <div class="container"style="width: 100%;">
-        <h1>Vul de onderstaande velden in</h1>
+    <div class="container" style="width: 100%;">
+        <h1 class="text-center">Kies een les</h1>
+        {% for les in lessen  %}
+        <div class="card-group">
+            <div class="card">
+                <p1 class="text-center">
+                    Training: {{ les.training.naam }} <br>
+                    Datum: {{ les.datum|date('Y-m-d') }}<br>
+                    Tijd: {{ les.tijd|date('H:i') }}<br>
+                    Locatie: {{ les.locatie }} <br>
+                    Max personen: {{ les.maxpersonen }} <br>
+                    Instructeur: {{ les.instructeur.email }} <br>
+                </p1>
+            </div>
+            {% endfor %}
+        </div>
+        <a href="/inschrijfhome">Schrijf in</a>
+{#        <button class="btn btn-lg btn-primary" type="submit">#}
+{#            #}
+{#        </button>#}
     </div>
+    <style>
+        p1{
+            font-size: 15px !important;
+            width: 300px;
+            color: white;
+
+            padding-left: 2%;
+            float: right;
+        }
+        .card{
+            background-color: rgba(21, 22, 22, 0.76);
+            flex: 1 0 0% !important;
+            float: left;
+        }
+        .card-group{
+            float: left;
+            box-sizing: content-box;
+            flex-flow: row wrap;
+        }
+        footer{
+            margin-top: 30% !important;
+            margin-right: 20%;
+        }
+    </style>
 {% endblock %}

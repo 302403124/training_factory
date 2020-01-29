@@ -121,14 +121,16 @@ class DirecteurController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository(User::class)->find($item);
 
-        $em->persist($user);]
+        $em->persist($user);
         $em->flush();
 
-        return $this->render('', [
-            'title' => '|Lid gegevens',
+        return $this->render('Admin/ledenlijst.html.twig', [
+            'title' => '|Lidgegevens',
             'lid' => $lid,
             'user' => $user,
+
         ]);
+
     }
 //    {
 //        $entityManager = $this->getDoctrine()->getManager();

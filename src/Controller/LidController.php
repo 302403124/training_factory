@@ -32,13 +32,13 @@ class LidController extends AbstractController
      */
         public function lessenaction()
     {
-        $les = $this->getDoctrine()
-            ->getRepository(Training::class)
+        $lessen = $this->getDoctrine()
+            ->getRepository(Les::class)
             ->findAll();
 
         return $this->render('lid/lessen.html.twig',[
             'title' => 'Agenda',
-            'les'=> $les
+            'lessen'=> $lessen
         ]);
     }
 
@@ -60,7 +60,7 @@ class LidController extends AbstractController
         $em->persist($inschrijving);
         $em->flush();
 
-        return $this->redirectToRoute('lidpagina');
+        return $this->redirectToRoute('inschrijfpagina');
     }
 
 }
