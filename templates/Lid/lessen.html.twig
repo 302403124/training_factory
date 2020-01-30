@@ -7,16 +7,16 @@
             <div class="card">
                 <p1 class="text-center">
                     Training: {{ les.training.naam }} <br>
-                    Datum: {{ les.datum|date('Y-m-d') }}<br>
+                    Datum: {{ les.datum|date('d-m-y') }}<br>
                     Tijd: {{ les.tijd|date('H:i') }}<br>
                     Locatie: {{ les.locatie }} <br>
                     Max personen: {{ les.maxpersonen }} <br>
                     Instructeur: {{ les.instructeur.email }} <br>
                 </p1>
+                <a href="{{path ('inschrijfpagina', { 'item': les.id})}}" style="text-align: center;">Schrijf in</a>
             </div>
             {% endfor %}
         </div>
-        <a href="/inschrijfhome">Schrijf in</a>
 {#        <button class="btn btn-lg btn-primary" type="submit">#}
 {#            #}
 {#        </button>#}

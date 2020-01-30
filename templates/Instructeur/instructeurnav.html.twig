@@ -1,19 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-transparent bg-transparent">
     <img src="{{ asset ('img/logo.png')}}" alt="Judo"  height="100px">
-    <a class="navbar-brand" href="/lidhome" style="margin-left: 1%;color: white !important;">Home</a>
+    <a class="navbar-brand" href="admin" style="margin-left: 1%;color: white !important;">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="/lessen" style="color: white !important;">Lessen</a>
+                <a class="nav-link" href="admintraining" style="color: white !important;">Lessen Plannen</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#" style="color: white !important;">Overzicht inschrijvingen</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#" style="color: white !important;">Gegevens lid</a>
+                <a class="nav-link" href="adminlessen" style="color: white !important;">Lessen beheer</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link"href="{{ path('app_logout') }}"style="color: white !important; margin-left: 800px;">Log uit</a>

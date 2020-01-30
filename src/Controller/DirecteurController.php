@@ -69,15 +69,15 @@ class DirecteurController extends AbstractController
         ]);
     }
     /**
-     * @Route("/agenda", name="agendapagina")
+     * @Route("/adminlessen", name="adminLpagina")
      */
-    public function agendaaction()
+    public function adminlessenaction()
     {
         $trainingen = $this->getDoctrine()
             ->getRepository(Training::class)
             ->findAll();
 
-        return $this->render('Admin/agenda.html.twig',[
+        return $this->render('Admin/adminlessen.html.twig',[
             'title' => 'Agenda',
             'trainingen'=> $trainingen
         ]);

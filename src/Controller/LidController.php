@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Entity\Inschrijving;
 use App\Entity\Les;
 use App\Repository\LesRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Training;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,11 +46,11 @@ class LidController extends AbstractController
     /**
      * @Route("/inschrijfhome/{item}", name="inschrijfpagina")
      */
-    public function inschrijvenaction($item)
+    public function inschrijfaction(EntityManagerInterface $em, $item)
     {
         $User = $this->getUser();
-        $em = $this->getDoctrine()->getManager();
-        $Les=$em->getRepository(Les::class)->find($item);
+        $repository = $this->getDoctrine()->getRepository(Les::class);
+        $Les = $repository->find($item);
 
         $inschrijving = new inschrijving();
         $inschrijving->setLes($Les);
@@ -60,7 +61,7 @@ class LidController extends AbstractController
         $em->persist($inschrijving);
         $em->flush();
 
-        return $this->redirectToRoute('inschrijfpagina');
+        return $this->redirectToRoute('lessenpagina');
     }
 
 }
