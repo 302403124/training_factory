@@ -63,23 +63,23 @@ class DirecteurController extends AbstractController
             ->getRepository(Training::class)
             ->findAll();
 
-        return $this->render('Admin/admintraining.twig',[
+        return $this->render('Admin/instructeurs.twig',[
             'title' => 'Agenda',
             'trainingen'=> $trainingen
         ]);
     }
     /**
-     * @Route("/adminlessen", name="adminLpagina")
+     * @Route("/instructeur", name="instructeurpagina")
      */
     public function adminlessenaction()
     {
-        $trainingen = $this->getDoctrine()
-            ->getRepository(Training::class)
+        $users = $this->getDoctrine()
+            ->getRepository(User::class)
             ->findAll();
 
-        return $this->render('Admin/adminlessen.html.twig',[
+        return $this->render('Admin/ledenlijst.html.twig',[
             'title' => 'Agenda',
-            'trainingen'=> $trainingen
+            'users'=> $users
         ]);
     }
     /**
