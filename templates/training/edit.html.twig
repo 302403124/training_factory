@@ -1,0 +1,16 @@
+{% extends 'Admin/adminbase.html.twig' %}
+{% block title %}Edit Training{% endblock %}
+{% block body %}
+    <body>
+    <div class="container">
+        <h1>Edit Training</h1>
+        {{ include('training/_form.html.twig', {'button_label': 'Update'}) }}    {{ include('training/_delete_form.html.twig') }}
+        <a href="{{ path('training_index') }}">back to list</a>
+    </div>
+    </body>
+    <style>
+        body {
+            background-image: url("{{ asset('img/background.jpg')}}");
+        }
+    </style>
+{% endblock %}

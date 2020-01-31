@@ -1,0 +1,14 @@
+{% extends 'Admin/adminbase.html.twig' %}
+{% block title %}New Training{% endblock %}
+{% block body %}
+    <div class="container">
+        <h1>Create new Training</h1>
+        {{ include('training/_form.html.twig') }}
+        <a href="{{ path('training_index') }}">back to list</a>
+    </div>
+    <style>
+        body {
+            background-image: url("{{ asset('img/background.jpg')}}");
+        }
+    </style>
+{% endblock %}

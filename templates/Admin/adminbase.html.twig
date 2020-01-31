@@ -35,7 +35,7 @@
 </html>
 <style>
     body{
-        background-image: url("img/background.jpg");
+        background-image: url("{{ asset('img/background.jpg')}}");
     }
     .text-muted{
         color: white !important;
@@ -49,9 +49,12 @@
     footer{
         margin-top: 35%;
     }
-    h4, h1, li, p, form{
+    h4, h1, li, p, form, table{
         color: white;
-        background-color: rgba(21, 22, 22, 0.76);
+        background-color: rgba(21, 22, 22, 0.76) !important;
+    }
+    table{
+        margin-top: 10%;
     }
     p{
         color: white;

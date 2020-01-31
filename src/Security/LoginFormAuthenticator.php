@@ -94,6 +94,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     {
         $adminRights = in_array('ROLE_ADMIN', $token ->getUser()->getRoles());
         $userRights = in_array('ROLE_USER', $token ->getUser()->getRoles());
+        $memberRights = in_array('ROLE_MEMBER', $token ->getUser()->getRoles());
+
         if ($adminRights)
         {
             return new RedirectResponse($this->urlGenerator->generate('adminpagina'));
@@ -101,6 +103,10 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         elseif ($userRights)
         {
             return new RedirectResponse($this->urlGenerator->generate('lidpagina'));
+        }
+        elseif ($memberRights)
+        {
+            return new RedirectResponse($this->urlGenerator->generate('instructeur_index'));
         }
     }
     protected function getLoginUrl()

@@ -1,0 +1,41 @@
+{% extends 'Admin/adminbase.html.twig' %}
+{% block title %}Training{% endblock %}
+{% block body %}
+    <div class="container">
+        <h1>Training</h1>
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ training.id }}</td>
+            </tr>
+            <tr>
+                <th>Naam</th>
+                <td>{{ training.naam }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ training.description }}</td>
+            </tr>
+            <tr>
+                <th>Duration</th>
+                <td>{{ training.duration }} minuten</td>
+            </tr>
+            <tr>
+                <th>Costs</th>
+                <td>€ {{ training.costs }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="{{ path('training_index') }}" style="background-color: rgba(21, 22, 22, 0.76) !important;">back to
+            list</a>
+        <a href="{{ path('training_edit', {'id': training.id}) }}"
+           style="background-color: rgba(21, 22, 22, 0.76) !important;">edit</a>
+        {{ include('training/_delete_form.html.twig') }}
+    </div>
+    <style>
+        body {
+            background-image: url("{{ asset('img/background.jpg')}}");
+        }
+    </style>
+{% endblock %}

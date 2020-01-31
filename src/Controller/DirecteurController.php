@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Instructeur;
 use App\Entity\User;
 use App\Form\Type\TrainingType;
 use App\Entity\Training;
 use App\Form\Type\UserType;
+use App\Repository\InstructeurRepository;
+use App\Repository\TrainingRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -52,6 +55,15 @@ class DirecteurController extends AbstractController
         return $this->render('Admin/adminhome.html.twig',[
             'title' => 'Agenda',
             'trainingen'=> $trainingen
+        ]);
+    }
+    /**
+     * @Route("/adminlessen", name="training_index", methods={"GET"})
+     */
+    public function index(TrainingRepository $trainingRepository): Response
+    {
+        return $this->render('training/index.html.twig', [
+            'trainings' => $trainingRepository->findAll(),
         ]);
     }
     /**
@@ -130,7 +142,6 @@ class DirecteurController extends AbstractController
             'user' => $user,
 
         ]);
-
     }
 //    {
 //        $entityManager = $this->getDoctrine()->getManager();

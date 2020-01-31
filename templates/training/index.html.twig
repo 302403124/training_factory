@@ -1,0 +1,45 @@
+{% extends 'Admin/adminbase.html.twig' %}
+{% block title %}Training index{% endblock %}
+{% block body %}
+    <div class="container">
+        <h1>Training index</h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Naam</th>
+                <th>Description</th>
+                <th>Duration</th>
+                <th>Costs</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for training in trainings %}
+                <tr>
+                    <td>{{ training.id }}</td>
+                    <td>{{ training.naam }}</td>
+                    <td>{{ training.description }}</td>
+                    <td>{{ training.duration }} minuten</td>
+                    <td>€ {{ training.costs }}</td>
+                    <td>
+                        <a href="{{ path('training_show', {'id': training.id}) }}">show |</a>
+                        <a href="{{ path('training_edit', {'id': training.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('training_new') }}" style="background-color: rgba(21, 22, 22, 0.76) !important;">Create new</a>
+    </div>
+    <style>
+        footer {
+            margin-top: 14.5% !important;
+        }
+    </style>
+{% endblock %}
